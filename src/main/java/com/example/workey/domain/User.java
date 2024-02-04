@@ -18,27 +18,28 @@ import java.time.LocalDateTime;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "userId" ,updatable = false, nullable = false)
     private Long id;
 
-    @Column
+    @Column(nullable = false)
     private String firstName;
 
-    @Column
+    @Column(nullable = false)
     private String lastName;
 
-    @Column
+    @Column(nullable = false, unique = true)
     private String email;
 
-    @Column
+    @Column(nullable = false)
     private String password;
 
-    @Column
+    @Column(nullable = false)
     private LocalDateTime startTime;
 
-    @Column
+    @Column(nullable = false)
     private LocalDateTime endTime;
 
-    @Column
+    @Column(nullable = false)
     private int company;
 
     @Column
@@ -47,7 +48,7 @@ public class User {
     @Column
     private int goodStateCount;
 
-    @Column
+    @Column(nullable = false)
     @DateTimeFormat(pattern = "dd")
     private LocalDateTime payday;
 
