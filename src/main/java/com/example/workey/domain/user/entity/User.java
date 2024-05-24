@@ -1,4 +1,4 @@
-package com.example.workey.domain;
+package com.example.workey.domain.user.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -6,10 +6,11 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Getter
 @Setter
@@ -34,10 +35,10 @@ public class User {
     private String password;
 
     @Column(nullable = false)
-    private LocalDateTime startTime;
+    private LocalTime startTime;
 
     @Column(nullable = false)
-    private LocalDateTime endTime;
+    private LocalTime endTime;
 
     @Column(nullable = false)
     private int company;
@@ -50,13 +51,13 @@ public class User {
 
     @Column(nullable = false)
     @DateTimeFormat(pattern = "dd")
-    private LocalDateTime payday;
+    private LocalDate payday;
 
-    @Column
     @CreatedDate
+    @Column(name = "createdAt", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
-    @Column
     @LastModifiedDate
+    @Column(name = "updatedAt", nullable = false)
     private LocalDateTime updatedAt;
 }

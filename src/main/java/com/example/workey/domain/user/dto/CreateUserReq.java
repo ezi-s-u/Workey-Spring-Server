@@ -1,39 +1,42 @@
-package com.example.workey.dto;
+package com.example.workey.domain.user.dto;
 
 // 회원가입 - post
 
-import com.example.workey.domain.User;
-import jakarta.persistence.Column;
+import com.example.workey.domain.user.entity.User;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
-@Getter
-@AllArgsConstructor
+@Data
 @NoArgsConstructor
-public class AddUserRequest {
+public class CreateUserReq {
 
-    private Long id;
     private String firstName;
     private String lastName;
     private String email;
     private String password;
-    private LocalDateTime startTime;
-    private LocalDateTime endTime;
+
+    @JsonFormat(pattern = "HH:mm:ss")
+    private LocalTime startTime;
+
+    @JsonFormat(pattern = "HH:mm:ss")
+    private LocalTime endTime;
+
     private int company;
     private String picture;
     private int goodStateCount;
-    private LocalDateTime payday;
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate payday;
 
     public User toEntity() {
         return User.builder()
-                .id(id)
                 .firstName(firstName)
                 .lastName(lastName)
                 .email(email)

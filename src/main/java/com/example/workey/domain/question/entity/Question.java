@@ -1,4 +1,4 @@
-package com.example.workey.domain;
+package com.example.workey.domain.question.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
